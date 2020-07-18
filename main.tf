@@ -16,7 +16,7 @@ locals {
     Owner        = "lmn"
     Provisioner  = "Terraform"
     Application  = var.Application
-    Department         = "Developers"
+    Department   = "Developers"
     Contact      = "lakshminaarayananvs@rediffmail.com"
     Stack        = "Development"
     Deployer_IAM = "${data.aws_caller_identity.current.arn}"
@@ -24,24 +24,24 @@ locals {
 
   # env Variables mappings used by Lambda & compute environments
   env = {
-    env_name    = "dev"
-    subnets = ["subnet-xxxxxxxx", "subnet-xxxxxx", "subnet-xxxxxx", "subnet-xxxxxx"] 
-    security_group_ids = ["sg-xxxxx"]
+    env_name           = "dev"
+    subnets            = var.ce_subnets
+    security_group_ids = var.ce_security_groups
   }
 }
 
 
 ###################################################
-# ~~~~~~~~~~ Modelling Pipeline BATCH ~~~~~~~~~~~#
+# ~~~~~~~~~~ BATCH ~~~~~~~~~~~#
 ###################################################
 
 module "compute_environment" {
   source                   = "./modules/compute_environment"
   service_name             = "${var.Name}"
   compute_environment_name = "${var.Name}-MyComputeEnvironment"
-  instance_type            = ["optimal", ]
-  maxvcpus                 = 256
-  minvcpus                 = 0
+  instance_type            = var.instance_type # ["optimal", ]
+  maxvcpus                 = var.maxvcpus
+  minvcpus                 = var.minvcpus
   ce_security_groups       = local.env.security_group_ids
   ce_subnets               = local.env.subnets
   environment              = local.env.env_name
@@ -54,7 +54,7 @@ module "compute_environment" {
 module "pipeline-job_queue" {
   source                   = "./modules/job_queue"
   job_queue_name           = "${var.Name}-${terraform.workspace}"
-  job_queue_priority       = 50
+  job_queue_priority       = var.job_queue_priority
   compute_environment_list = ["${var.Name}-MyComputeEnvironment"]
 
   # tags
@@ -67,11 +67,11 @@ module "pipeline-job_queue" {
 module "my_job_definition" {
   source              = "./modules/job_definition"
   service_name        = "${var.Name}"
-  jd_command          = ["python", "/home/analysis/run.py", "Ref::s3_uri"]
-  docker_ecr_link     = "Modelling-pipeline-docker:PrPCodeBuild"
-  jd_memory           = 1024
-  jd_vcpus            = 1
-  job_definition_name = "${var.Name}-lmn-${terraform.workspace}"
+  jd_command          = var.job_command      # ["python", "/home/analysis/run.py", "Ref::s3_uri"]
+  docker_ecr_link     = var.docker_repo_name # "Modelling-pipeline-docker:PrPCodeBuild"
+  jd_memory           = var.jd_memory        # 1024
+  jd_vcpus            = var.jd_vcpus         # 2
+  job_definition_name = "${var.Name}-{var.job_definition_name}-${terraform.workspace}"
   iam_task_policy_actions = [
     "ec2:*",
     "logs:*",
