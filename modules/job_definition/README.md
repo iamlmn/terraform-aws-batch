@@ -31,5 +31,4 @@ module "my_job_definition" {
 ```
 
 ### Prerequisites
- - VPC default/ custom should be already present.
  - ECR & docker image should be already present

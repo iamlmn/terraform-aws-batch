@@ -20,4 +20,3 @@ module "compute_environment" {
 
 ### Prerequisites
  - VPC default/ custom should be already present.
- - ECR & docker image should be already present

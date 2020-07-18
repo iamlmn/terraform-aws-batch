@@ -17,5 +17,4 @@ module "batch-job_queue" {
 ```
 
 ### Prerequisites
- - VPC default/ custom should be already present.
- - ECR & docker image should be already present
+ - Atlesat one Compute environment
