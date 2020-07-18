@@ -7,9 +7,6 @@ Author  : lakshminaarayananvs@rediffmail.com
 
 provider "aws" {
   region = var.region
-  assume_role {
-    role_arn = var.workspace_iam_roles[terraform.workspace]
-  }
 }
 
 locals {

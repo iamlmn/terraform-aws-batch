@@ -18,7 +18,6 @@ brew install terraform # OS X
 ```
 ### Prerequisites
  - Assumes the backed s3 bucket "bh-platform-terraform-"$ENVIRONMENT"" is present.
- - AWS creds configured with access to bhb-users s3 bucket / an to be able to assume roles from respective environments.
  - VPC default/ custom should be already present.
  - ECR & docker image should be already present.
 
