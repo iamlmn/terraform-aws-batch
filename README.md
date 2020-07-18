@@ -1,5 +1,6 @@
 <img src="https://logodix.com/logo/1686050.png" height="128" width="128"> 
-# High-Throughput Batch Computing on AWS. ![terraform version](https://img.shields.io/badge/terraform-v0.12.28-purple)
+# High-Throughput Batch Computing on AWS. 
+![terraform version](https://img.shields.io/badge/terraform-v0.12.28-purple)
 IaC setup for high-throutput-batch-workflow setup in AWS using Batch written in terrraform.
 
 
