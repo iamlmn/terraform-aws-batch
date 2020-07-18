@@ -3,7 +3,7 @@ IaC setup for high-throutput-batch-workflow setup in AWS using Batch written in 
 
 <img src="https://logodix.com/logo/1686050.png" height="32" width="32"> ![terraform version](https://img.shields.io/badge/terraform-v0.12.28-purple)
 
-## Summary of set up
+## Set up
 ### Get terraform
 ```shell
 wget https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
@@ -16,6 +16,7 @@ brew install terraform # OS X
 ```
 
 ### module definition
+Configure AWS Batch with just ~15lines of configs.
 ```
 module "batch" {
   source      = "iamlmn/batch/aws"
