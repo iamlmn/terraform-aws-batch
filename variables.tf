@@ -18,15 +18,17 @@ variable "region" {
   default     = "us-east-1"
 }
 
+/*
 # VPC Setting
 variable "vpc_config" {
-  default     = null
   description = "Provide this to allow your function to access your VPC. Fields documented below. See Lambda in VPC."
   type = object({
     security_group_ids = list(string)
     subnet_ids         = list(string)
   })
+  default     = null
 }
+*/
 
 # Batch variables
 
@@ -80,7 +82,7 @@ variable "jd_memory" {
 
 variable "job_command" {
   description = "Job definition command"
-  default = ["ls","-l"]
+  default     = ["ls", "-l"]
 }
 
 variable "job_definition_name" {

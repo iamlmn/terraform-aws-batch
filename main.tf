@@ -67,10 +67,10 @@ module "pipeline-job_queue" {
 module "my_job_definition" {
   source              = "./modules/job_definition"
   service_name        = "${var.Name}"
-  jd_command          = var.job_command      # ["python", "/home/analysis/run.py", "Ref::s3_uri"]
-  docker_ecr_link     = var.docker_repo_name # "Modelling-pipeline-docker:PrPCodeBuild"
-  jd_memory           = var.jd_memory        # 1024
-  jd_vcpus            = var.jd_vcpus         # 2
+  jd_command          = var.job_command
+  docker_ecr_link     = var.docker_repo_name
+  jd_memory           = var.jd_memory
+  jd_vcpus            = var.jd_vcpus
   job_definition_name = "${var.Name}-{var.job_definition_name}-${terraform.workspace}"
   iam_task_policy_actions = [
     "ec2:*",
@@ -90,3 +90,5 @@ module "my_job_definition" {
   # tags
   resource_tags = local.common_tags
 }
+
+

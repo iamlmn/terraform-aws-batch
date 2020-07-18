@@ -3,8 +3,7 @@
 IaC setup for high-throutput-batch-workflow setup in AWS using Batch written in terrraform.
 ### Code
 Code was written in HashiCorp Language(HCL) with terraform v0.12.28.
-### CI/CD
-Currently CI/CD is not setup.
+
 ## Summary of set up
 ### Get terraform
 ```shell
@@ -16,28 +15,50 @@ or
 ```shell
 brew install terraform # OS X 
 ```
+
+
+### module definition
+```
+module "batch" {
+  source      = "iamlmn/batch/aws"
+  version     = "1.1.0"
+  Name        = "${var.Name}"
+  Application = "${var.Application}"
+
+  # Compute environment
+  instance_type      = "${var.instance_type}"
+  maxvcpus           = "${var.maxvcpus}"
+  minvcpus           = "${var.minvcpus}"
+  ce_security_groups = "${var.ce_security_groups}"
+  ce_subnets         = "${var.ce_subnets}"
+
+  # job definitions
+  job_definition_name = "${var.job_definition_name}"
+  docker_repo_name    = "${var.docker_repo_name}"
+  jd_memory           = "${var.jd_memory}"
+  jd_vcpus            = "${var.jd_vcpus}"
+  job_command         = "${var.job_command}"
+
+  # job queues
+  job_queue_name     = "${var.job_queue_name}"
+  job_queue_priority = "${var.job_queue_priority}"
+
+
+  region = "us-east-1"
+}
+```
+
 ### Prerequisites
  - VPC default/ custom should be already present.
- - ECR & docker image should be already present.
+ - ECR & docker image should be already present
 
-## How to run tests
- Plan is to have tests for all src lambdas. Not setup yet.
-#### Deployment instructions 
-deploy.sh does all the work for you.
-```
-chmod +x ./deploy.sh
-bash deploy.sh "$ENVIRONMENT" "$REGION" "$NAME_TAG" "$APP_TAG"
-```
+## INPUTS
 1. "$ENVIRONMENT" : Staging name - [dev, uat, prod]
 2. "$REGION" : AWS region where you want the resources to be deployed.
 3. "$NAME_TAG" : Service name - PredictonPipeline here.
 4. "$APP_TAG" : Application that uses this service - Breed.
 
-#### Destruction
-Run the destroy.sh in bash, it automaticlly removes all the resources created.
-```shell
-chmod +x ./deploy.sh
-bash deploy.sh "$ENVIRONMENT" "$REGION" "$NAME_TAG" "$APP_TAG"
-```
+## OUTPUTS
+
 ### Contributors
  - [Lakshmi Naarayanan](https://github.com/iamlmn) 
