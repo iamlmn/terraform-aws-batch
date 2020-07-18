@@ -3,8 +3,7 @@ IaC setup for high-throutput-batch-workflow setup in AWS using Batch written in 
 
 <!-- ![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)] -->
 
-<img src="https://logodix.com/logo/1686050.png" height="128" width="128"> [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-eks-cluster.svg)](https://github.com/cloudposse/terraform-aws-eks-cluster/releases/latest)
-[![workflow](https://github.com/telia-oss/terraform-aws-vpc/workflows/workflow/badge.svg)](https://github.com/telia-oss/terraform-aws-vpc/actions)
+<img src="https://logodix.com/logo/1686050.png" height="128" width="128"> 
 
 ### Code
 Code was written in HashiCorp Language(HCL) with terraform v0.12.28.
