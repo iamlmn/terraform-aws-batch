@@ -1,0 +1,39 @@
+# Pseudo code for Code Build setup for CI/CD.
+version: 0.2
+
+env:
+  variables:
+     ENVIRONMENT: $ENVIRONMENT
+     REGION: $REGION
+     OWNER_TAG: $OWNER_TAG
+     NAME_TAG: $NAME_TAG
+     APP_TAG: $APP_TAG
+
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      python: 3.6
+      # name: version
+      # name: version
+    commands:
+      - yum install unzip zip -y
+      - wget https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
+      - unzip terraform_0.12.28_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - chmod +x ./Terraform/deploy.sh
+      # - command
+      # - command
+  pre_build:
+    commands:
+      # - python tests lambda
+  build:
+    commands:
+      - echo bash deploy.sh $ENVIRONMENT" "$REGION" "$NAME_TAG" "$APP_TAG"
+      - bash deploy.sh $ENVIRONMENT" "$REGION" "$NAME_TAG" "$APP_TAG"
+  #post_build:
+    #commands:
+      # - command
+      # - command
+
