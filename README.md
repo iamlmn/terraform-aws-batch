@@ -42,7 +42,6 @@ module "batch" {
   job_queue_name     = "${var.job_queue_name}"
   job_queue_priority = "${var.job_queue_priority}"
 
-
   region = "us-east-1"
 }
 ```
@@ -65,16 +64,16 @@ module "batch" {
 | ce_security_groups | The ce_security_groups | `list(string)` | `true` | yes |
 | ce_subnets | The ce_subnets | `list(string)` | `true` | yes |
 | docker_repo_name | The name of the job definitions | `string` | `true` | yes |
-| Name | Name of the service/pipeline | `string` | `"true"` | yes |
+| Name | Name of the service/pipeline | `string` | `true` | yes |
 | instance_type | The ce_subnets | `list(string)` | `false` | no |
 | jd_memory | Batch job definition memory | `string` | `true` | no |
-| jd_vcpus | VCPUs required by the job definition | `string` | `"true"` | no |
+| jd_vcpus | VCPUs required by the job definition | `string` | `true` | no |
 | job_command | Job definition command | `list` | `true` | no |
-| job_queue_name | The name of the job queue | `string` | `"true"` | no |
+| job_queue_name | The name of the job queue | `string` | `true` | no |
 | job_queue_priority | Job definition command | `string` | `true` | no |
-| maxvcpus | Max allowed Vcpus to be spun up by compute environment | `string` | `"true"` | no |
-| minvcpus | Min allowed Vcpus to be spun up by compute environment | `string` | `"true"` | no |
-| region | AWS availability zone/region | `string` | `"true"` | no |
+| maxvcpus | Max allowed Vcpus to be spun up by compute environment | `string` | `true` | no |
+| minvcpus | Min allowed Vcpus to be spun up by compute environment | `string` | `true` | no |
+| region | AWS availability zone/region | `string` | `true` | no |
 
 
 ## Outputs
@@ -86,5 +85,8 @@ module "batch" {
 | job_definition_name | The Name of the Batch Job definition created |
 | job_queue_arn | The ARN of the Batch Job queue |
 
-### Contributors
+### Author
  - [Lakshmi Naarayanan](https://github.com/iamlmn) 
+
+### License
+- [MIT License](https://github.com/iamlmn/terraform-aws-batch/blob/master/LICENSE)
