@@ -15,7 +15,7 @@ if ! terraform workspace list 2>&1 | grep -qi "$ENVIRONMENT"; then
 fi
 terraform workspace select "$ENVIRONMENT"
 terraform get
-#export TF_BACKEND_S3_BUCKET="bh-breed-terraform-$ENVIRONMENT" # workaround for multi account s3 backend since variable interpolation is not supported directly(as of tf 0.12).
+#export TF_BACKEND_S3_BUCKET="my-bucket" # workaround for multi account s3 backend since variable interpolation is not supported directly(as of tf 0.12).
 terraform apply \
   -var "region=$REGION" \
   -var "Application=$APPLICATION_TAG" \
