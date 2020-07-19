@@ -77,7 +77,6 @@ module "batch" {
 
 
 ## Outputs
-
 | Name | Description |
 |------|-------------|
 | job_queue_arn | The ARN of the Batch Job queue created |
@@ -85,7 +84,7 @@ module "batch" {
 | job_definition_name | The Name of the Batch Job definition created |
 | job_queue_arn | The ARN of the Batch Job queue |
 
-### Planned work/ TODOs : 
+### Planned work/ TODOs :
  - [x] Base Batch module. 
  - [x] Basic Batch submodule.
  - [x] Register as Terraform module.
