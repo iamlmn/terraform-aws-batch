@@ -15,7 +15,7 @@ or
 brew install terraform # OS X 
 ```
 
-### module definition
+### Batch module usage
 Configure AWS Batch with just ~15lines of configs.
 ```
 module "batch" {
@@ -46,8 +46,14 @@ module "batch" {
 }
 ```
 
-## Requirements
+Individual sub-modules can also be used directly
+Refer to their respective readme for usages.
+- [ Batch Compute Environment](https://github.com/iamlmn/terraform-aws-batch/blob/master/modules/compute_environment/README.md) 
+- [Batch Job definition](https://github.com/iamlmn/terraform-aws-batch/blob/master/modules/job_definition/README.md)  
+- [Batch Job queue](https://github.com/iamlmn/terraform-aws-batch/blob/master/modules/job_queue/README.md) 
 
+
+## Requirements
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.6 |
@@ -88,6 +94,7 @@ module "batch" {
  - [x] Base Batch module. 
  - [x] Basic Batch submodule.
  - [x] Register as Terraform module.
+ - [ ] Fix submodule readme.
  - [ ] Generalize more with all possible configs.
  - [ ] Better variable description and documentation. 
 
