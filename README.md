@@ -94,7 +94,7 @@ Refer to their respective readme for usages.
  - [x] Base Batch module. 
  - [x] Basic Batch submodule.
  - [x] Register as Terraform module.
- - [ ] Fix submodule readme.
+ - [ ] Alpha Test and fix Readme usage definitions.
  - [ ] Generalize more with all possible configs.
  - [ ] Better variable description and documentation. 
 
