@@ -87,7 +87,7 @@ module "batch" {
 
 ### Planned work/ TODOs : 
  - [x] Base Batch module. 
- - [x] Basic Sub module.
+ - [x] Basic Batch submodule.
  - [x] Terraform module.
  - [ ] All options/choices as config.
  - [ ] Better description and documentation.
